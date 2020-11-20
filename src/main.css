@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Quicksand';
-  src: url('/meditation-app/assets/font/Quicksand.ttf');
+  font-family: 'Roboto';
+  src: url('/meditation-app/assets/font/Roboto.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -12,79 +12,96 @@
 }
 
 .app {
-  height: 100vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  font-family: 'Quicksand';
-  font-size: 1rem;
+  height: 100vh;
+  font-family: 'Roboto';
+  text-shadow: 0px 0px 30px rgba(80, 80, 80, 1);
 }
 
 .time-select,
-.sound-picker,
-.player-container {
-  height: 80%;
-  flex: 1;
+.sound-picker {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  flex: 1;
+  height: 80vh;
+  min-width: 25vh;
 }
 
 .player-container {
-  position: relative;
-  height: 80%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  height: 80vh;
+  min-width: 50vh;
 }
 
 .player-container svg {
   position: absolute;
-  height: 50%;
-  top: 50%;
+  /* height: 50%; */
+  height: 40vh;
+  top: 35%;
   left: 50%;
-  transform: translate(-50%, -50%);
   pointer-events: none;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.player-container svg circle {
+  transition: all 1s ease-in-out;
 }
 
 .time-display {
   position: absolute;
-  bottom: 10%;
+  /* bottom: 10%; */
+  bottom: 9vh;
+  font-size: 7vh;
   color: white;
-  font-size: 3rem;
 }
 
 video {
   position: fixed;
-  top: 0%;
-  left: 0%;
-  width: 100%;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
   z-index: -10;
 }
 
-.time-select button,
-.sound-picker button {
-  color: white;
-  width: 30%;
-  height: 10%;
+.time-select button {
+  width: 25vh;
+  height: 10vh;
   background: none;
-  border: 3px solid white;
-  border-radius: 10px;
-  font-size: 1.8rem;
+  border: 4px solid white;
+  border-radius: 1.8vh;
+  font-family: 'Roboto';
+  font-size: 4vh;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sound-picker button {
+  padding: 3.6vh;
+  width: 16.7vh;
+  height: 16.7vh;
+  border: 4px solid white;
+  border-radius: 50%;
+  background: none;
   outline: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .time-select button:hover {
-  color: grey;
+  color: black;
   background: white;
-}
-
-.sound-picker button {
-  height: 180px;
-  width: 180px;
-  border-radius: 50%;
-  padding: 30px;
 }
 
 .sound-picker button img {
@@ -92,5 +109,27 @@ video {
 }
 
 .play {
+  margin-top: 4.5vh;
+  width: 10vh;
   cursor: pointer;
+}
+
+.replay {
+  /* margin-bottom: 5%; */
+  margin-bottom: 1.5vh;
+  width: 5vh;
+  cursor: pointer;
+  transition: all 0.8s ease;
+}
+
+.replay:hover {
+  transform: rotate(-360deg);
+}
+
+.sound-picker button:nth-child(1):hover {
+  background: #427ec769;
+}
+
+.sound-picker button:nth-child(2):hover {
+  background: #ce592b67;
 }
