@@ -11,6 +11,15 @@
   box-sizing: border-box;
 }
 
+video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -10;
+}
+
 .app {
   display: flex;
   justify-content: space-evenly;
@@ -44,7 +53,6 @@
 
 .player-container svg {
   position: absolute;
-  /* height: 50%; */
   height: 40vh;
   top: 35%;
   left: 50%;
@@ -53,24 +61,14 @@
 }
 
 .player-container svg circle {
-  transition: all 1s ease-in-out;
+  transition: all 0.35s ease-in-out;
 }
 
 .time-display {
   position: absolute;
-  /* bottom: 10%; */
   bottom: 9vh;
   font-size: 7vh;
   color: white;
-}
-
-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -10;
 }
 
 .time-select button {
@@ -84,7 +82,17 @@ video {
   color: white;
   outline: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+}
+
+.time-select button:hover {
+  color: black;
+  background: white;
+}
+
+.time-select button:active,
+.sound-picker button:active {
+  transform: scale(0.95);
 }
 
 .sound-picker button {
@@ -96,16 +104,37 @@ video {
   background: none;
   outline: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
-.time-select button:hover {
-  color: black;
+.sound-picker button:nth-child(1) {
+  background-image: url('/meditation-app/assets/image/svg/rain.svg');
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sound-picker button:nth-child(2) {
+  background-image: url('/meditation-app/assets/image/svg/beach.svg');
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sound-picker button:nth-child(1):hover {
   background: white;
+  background-image: url('/meditation-app/assets/image/svg/rain-1.svg');
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.sound-picker button img {
-  height: 100%;
+.sound-picker button:nth-child(2):hover {
+  background: white;
+  background-image: url('/meditation-app/assets/image/svg/beach-1.svg');
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .play {
@@ -115,7 +144,6 @@ video {
 }
 
 .replay {
-  /* margin-bottom: 5%; */
   margin-bottom: 1.5vh;
   width: 5vh;
   cursor: pointer;
@@ -124,12 +152,4 @@ video {
 
 .replay:hover {
   transform: rotate(-360deg);
-}
-
-.sound-picker button:nth-child(1):hover {
-  background: #427ec769;
-}
-
-.sound-picker button:nth-child(2):hover {
-  background: #ce592b67;
 }
