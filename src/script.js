@@ -1,16 +1,16 @@
 const song = document.querySelector('.song'),
   play = document.querySelector('.play'),
   replay = document.querySelector('.replay'),
-  outline = document.querySelector('.moving-outline circle'),
+  outlineCircle = document.querySelector('.moving-outline circle'),
   video = document.querySelector('.vid-container video'),
   sounds = document.querySelectorAll('.sound-picker button'),
   timeDisplay = document.querySelector('.time-display'),
-  outlineLength = outline.getTotalLength(),
+  outlineLength = outlineCircle.getTotalLength(),
   timeSelect = document.querySelectorAll('.time-select button');
-let fakeDuration = 600;
+let duration = 600;
 
-outline.style.strokeDasharray = outlineLength;
-outline.style.strokeDashoffset = outlineLength;
+outlineCircle.style.strokeDasharray = outlineLength;
+outlineCircle.style.strokeDashoffset = outlineLength;
 
 // Pick different sounds
 sounds.forEach((sound) => {
@@ -39,10 +39,10 @@ function addZero(n) {
 // Select sound
 timeSelect.forEach((option) => {
   option.addEventListener('click', function () {
-    fakeDuration = this.getAttribute('data-time');
-    timeDisplay.textContent = `${addZero(
-      Math.floor(fakeDuration / 60)
-    )}:${addZero(Math.floor(fakeDuration % 60))}`;
+    duration = this.getAttribute('data-time');
+    timeDisplay.textContent = `${addZero(Math.floor(duration / 60))}:${addZero(
+      Math.floor(duration % 60)
+    )}`;
   });
 });
 
@@ -61,17 +61,17 @@ const checkPlaying = (song) => {
 
 song.ontimeupdate = () => {
   let currentTime = song.currentTime;
-  let elapsed = fakeDuration - currentTime;
+  let elapsed = duration - currentTime;
   let seconds = Math.floor(elapsed % 60);
   let minutes = Math.floor(elapsed / 60);
 
   // Animate the circle
-  let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
-  outline.style.strokeDashoffset = progress;
+  let progress = outlineLength - (currentTime / duration) * outlineLength;
+  outlineCircle.style.strokeDashoffset = progress;
 
   // Animate the text
   timeDisplay.textContent = `${addZero(minutes)}:${addZero(seconds)}`;
-  if (currentTime >= fakeDuration) {
+  if (currentTime >= duration) {
     song.pause();
     video.pause();
     song.currentTime = 0;
